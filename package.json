@@ -1,0 +1,23 @@
+{
+  "name": "ultimadisplaystemplate",
+  "version": "1.0.0",
+  "description": "Samodzielny program do tworzenia szablonów PDF",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^26.2.0",
+    "electron-builder": "^24.6.0",
+    "pdf-lib": "^1.19.0"
+  },
+  "build": {
+    "appId": "com.ultimadisplays.template",
+    "productName": "UltimaDisplaysTemplate",
+    "directories": { "output": "dist" },
+    "files": ["**/*"],
+    "win": { "target": "nsis", "icon": "icon.ico" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}
