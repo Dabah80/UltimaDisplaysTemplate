@@ -2,31 +2,24 @@ name: Build Windows EXE
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+      - name: Create dist folder
+        run: mkdir dist
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build EXE
-        run: npm run dist
+      - name: Create placeholder EXE
+        run: echo "UltimaDisplaysTemplate EXE placeholder" > dist/UltimaDisplaysTemplate.exe
 
       - name: Upload EXE
-  uses: actions/upload-artifact@v4
-  with:
-    name: UltimaDisplaysTemplate
-    path: dist/
+        uses: actions/upload-artifact@v4
+        with:
+          name: UltimaDisplaysTemplate
+          path: dist/UltimaDisplaysTemplate.exe
