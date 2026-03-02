@@ -12,14 +12,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Create dist folder
-        run: mkdir dist
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
-      - name: Create placeholder EXE
-        run: echo "UltimaDisplaysTemplate EXE placeholder" > dist/UltimaDisplaysTemplate.exe
+      - name: Install pkg
+        run: npm install -g pkg
+
+      - name: Build EXE
+        run: pkg . --out-path dist
 
       - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
           name: UltimaDisplaysTemplate
-          path: dist/UltimaDisplaysTemplate.exe
+          path: dist/*.exe
