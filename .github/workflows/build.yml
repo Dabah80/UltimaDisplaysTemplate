@@ -25,8 +25,8 @@ jobs:
       - name: Build EXE
         run: npm run dist
 
-      - name: Upload EXE as artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: UltimaDisplaysTemplate-EXE
-          path: dist/*.exe
+      - name: Upload EXE
+  uses: actions/upload-artifact@v4
+  with:
+    name: UltimaDisplaysTemplate
+    path: dist/
